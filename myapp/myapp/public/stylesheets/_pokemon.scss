@@ -1,0 +1,22 @@
+@mixin border-effects($font, $radius, $padding){
+  font-size: $font;
+  border-radius: $radius;
+  padding: $padding;
+}
+
+.panel{
+  border: 3px;
+  background: lightgreen;
+  margin: 10px;
+  @include border-effects(15px, 25px, 10px)
+}
+
+.little-panel{
+  @extend .panel;
+  @include border-effects(12px, 10px, 5px)
+}
+
+.big-panel{
+  @extend .panel;
+  @include border-effects(24px, 50px, 20px)
+}

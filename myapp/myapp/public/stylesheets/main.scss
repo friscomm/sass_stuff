@@ -1,0 +1,35 @@
+@import "pokemon";
+
+$primary-color: #79C9A5;
+$accent-color: #4E7D9F;
+$bg-color: #F0F8FF;
+
+body{
+  background-color: $bg-color;
+}
+
+nav{
+
+  ul{
+    background-color: $accent-color;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li{
+    display: inline-block;
+  }
+
+  a{
+    color: $primary-color;
+    display: inline-block;
+    padding: 10px 46px;
+    text-decoration: none;
+  }
+
+  a:hover{
+    background-color: $accent-color;
+  }
+
+}
