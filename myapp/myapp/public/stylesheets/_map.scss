@@ -1,3 +1,6 @@
+$good-button: dodgerblue;
+$bad-button: red;
+
 .commentContainer{
   border: 2px solid black;
   border-radius: 5px;
@@ -5,10 +8,20 @@
 
 .commentText{
   color: teal;
+  margin: 15px;
+
 }
 
 button{
   padding: 10px 16px;
   margin: 5px;
   border-radius: 15px;
+}
+
+.button-edit{
+  background-color: $good-button * 5.5;
+}
+
+.button-danger{
+  background-color: $bad-button;
 }
