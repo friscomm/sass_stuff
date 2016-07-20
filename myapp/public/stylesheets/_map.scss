@@ -1,27 +1,26 @@
-$good-button: dodgerblue;
-$bad-button: red;
-
-.commentContainer{
-  border: 2px solid black;
-  border-radius: 5px;
+$good-button: rgb(77, 172, 167);
+$bad-button: rgb(235, 74, 57);
+.commentContainer {
+    border: 2px solid black;
+    border-radius: 5px;
+    background-color: rgb(103, 120, 135);
 }
-
-.commentText{
-  color: teal;
-  margin: 15px;
-
+.commentText {
+    color: rgb(193, 204, 207);
+    margin: 15px;
 }
-
-button{
-  padding: 10px 16px;
-  margin: 5px;
-  border-radius: 15px;
+button {
+    padding: 10px 16px;
+    margin: 5px;
+    border-radius: 5px;
+    color: rgb(223, 230, 228);
 }
-
-.button-edit{
-  background-color: $good-button * 5.5;
+button:focus {
+    outline: none;
 }
-
-.button-danger{
-  background-color: $bad-button;
+.button-edit {
+    background-color: $good-button;
+}
+.button-danger {
+    background-color: $bad-button;
 }

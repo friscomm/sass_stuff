@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
     <link rel='stylesheet' href='/stylesheets/main.min.css'>
     <script src="https://fb.me/react-15.2.1.js"></script>
     <script src="https://fb.me/react-dom-15.2.1.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
-  </head>
-  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+</head>
+
+<body>
     <h1>React!</h1>
     <% include templates/header.ejs %>
 
-    <div id="app"></div>
+        <div id="app"></div>
 
-    <script type="text/babel">
+        <script type="text/babel">
 
-      var Comment = React.createClass({
-
-        render: function() {
-          return(
+            var Comment = React.createClass({
+              edit: function() {
+                alert("editing");
+              },
+              delete: function() {
+                alert("deleting");
+              },
+              render: function() {
+                return(
             <div className="commentContainer">
-              <div className="commentText">Text</div>
-              <button className="button-edit">Edit</button>
-              <button className="button-danger">Remove</button>
+                <div className="commentText">Text</div>
+                <button onClick={this.edit} className="button-edit">Edit</button>
+                <button onClick={this.delete} className="button-danger">Remove</button>
             </div>
+            );
+          }
+        });
+        ReactDOM.render(
+            <Comment />, document.getElementById('app')
           );
-        }
-      });
-    ReactDOM.render(<Comment />, document.getElementById('app'));
-    </script>
-  </body>
+        </script>
+</body>
+
 </html>
