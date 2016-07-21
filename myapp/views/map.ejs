@@ -29,15 +29,50 @@
               render: function() {
                 return(
             <div className="commentContainer">
-                <div className="commentText">Text</div>
+                <div className="commentText">{this.props.children}</div>
                 <button onClick={this.edit} className="button-edit">Edit</button>
                 <button onClick={this.delete} className="button-danger">Remove</button>
             </div>
             );
           }
         });
+
+            var CheckBox = React.createClass({
+
+              getInitialState: function() {
+                return{
+                  checked: true
+                }
+              },
+
+              handleChecked: function() {
+                this.setState({checked: !this.state.checked})
+              },
+
+              render: function(){
+                  var msg;
+                  if(this.state.checked){
+                    msg = "checked"
+                  } else {
+                    msg = "not checked"
+                  }
+                  return(
+                    <div>
+                      <input type="checkbox" defaultChecked={this.state.checked} onChange={this.handleChecked} />
+                      <h3>This box is {msg}</h3>
+                    </div>
+                  );
+              }
+            });
+
         ReactDOM.render(
-            <Comment />, document.getElementById('app')
+          <div>
+            <Comment>Here is text</Comment>
+            <Comment>Sample Comment</Comment>
+            <Comment>Last one</Comment>
+            <CheckBox />
+          </div>
+          , document.getElementById('app')
           );
         </script>
 </body>
