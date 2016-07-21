@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <link rel='stylesheet' href='/stylesheets/main.min.css'>
+    <script src="https://fb.me/react-15.2.1.js"></script>
+    <script src="https://fb.me/react-dom-15.2.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js"></script>
+</head>
+
+<body>
+    <h1>Resources</h1>
+    <% include templates/header.ejs %>
+
+        <div id="app"></div>
+
+        <script type="text/babel">
+
+            var TextBox = React.createClass({
+              getInitialState: function() {
+                return{
+                  value: "stuff"
+                }
+              },
+
+              handleTyping: function(){
+                var val = this.refs.newText.value;
+                this.setState({
+                  value: {val}
+                });
+                console.log("Here's the value " + val);
+              },
+
+              mark: function() {
+                var val = this.refs.newText.value;
+              },
+
+              render: function() {
+                return(
+                        <div className="textbox">
+                            <textarea ref="newText" rows="4" cols="50"/>
+                            <button onClick={this.handleTyping} className="button-enter">Enter</button>
+                            <div className="typed-text">
+                              Here is the state value:
+                              {this.state.value}
+                            </div>
+                        </div>
+                );
+              }
+            });
+
+            var Comment = React.createClass({
+              edit: function() {
+                alert("editing");
+              },
+              delete: function() {
+                alert("deleting");
+              },
+              render: function() {
+                return(
+            <div className="commentContainer">
+                <div className="commentText">{this.props.children}</div>
+                <button onClick={this.edit} className="button-edit">Enter</button>
+            </div>
+            );
+          }
+        });
+
+            var CheckBox = React.createClass({
+
+              getInitialState: function() {
+                return{
+                  checked: true
+                }
+              },
+
+              handleChecked: function() {
+                this.setState({checked: !this.state.checked})
+              },
+
+              render: function(){
+                  var msg;
+                  if(this.state.checked){
+                    msg = "checked"
+                  } else {
+                    msg = "unchecked"
+                  }
+                  return(
+                    <div>
+                      <input type="checkbox" defaultChecked={this.state.checked} onChange={this.handleChecked} />
+                      <h3>This box is {msg}</h3>
+                    </div>
+                  );
+              }
+            });
+
+        ReactDOM.render(
+          <div>
+            <TextBox />
+            <Comment>Resources</Comment>
+            <Comment>Last one</Comment>
+            <CheckBox />
+          </div>
+          , document.getElementById('app')
+          );
+
+          console.log("HELLO THERE");
+          console.log(marked('I am using __markdown__.'));
+        </script>
+</body>
+</html>
