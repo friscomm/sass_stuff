@@ -28,15 +28,22 @@
               },
 
               handleTyping: function(){
-                var val = marked(this.refs.newText.value);
+                var val = marked(this.refs.newText.value, {sanitize: true});
                 this.setState({
                   value: val
                 });
                 console.log("Here's the value " + val);
               },
 
+              rawMarkup: function(value) {
+                var rawMarkup = marked(value, {sanitize: true});
+                return {__html: rawMarkup};
+              },
+
               mark: function() {
-                var val = this.refs.newText.value;
+                var val = this.val;
+                return {__html: val };
+                console.log("here's the mark function's val: " + val);
               },
 
               render: function() {
@@ -44,9 +51,9 @@
                         <div className="textbox">
                             <textarea ref="newText" rows="4" cols="50"/>
                             <button onClick={this.handleTyping} className="button-enter">Enter</button>
-                            <div className="typed-text">
-                              Here is the state value:
-                              {this.state.value}
+                            <h3>Output</h3>
+                            <div className="typed-text" dangerouslySetInnerHTML={{__html: this.state.value}}>
+
                             </div>
                         </div>
                 );
@@ -108,7 +115,6 @@
           , document.getElementById('app')
           );
 
-          console.log("HELLO THERE");
           console.log(marked('I am using __markdown__.'));
         </script>
 </body>
