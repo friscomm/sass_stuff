@@ -28,9 +28,9 @@
               },
 
               handleTyping: function(){
-                var val = this.refs.newText.value;
+                var val = marked(this.refs.newText.value);
                 this.setState({
-                  value: {val}
+                  value: val
                 });
                 console.log("Here's the value " + val);
               },
